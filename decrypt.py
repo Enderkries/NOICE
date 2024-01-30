@@ -1,6 +1,7 @@
 #import Modules
 
 import os
+import base64
 from cryptography.fernet import Fernet
 
 #Find files
@@ -12,8 +13,11 @@ for file in os.listdir():
         if os.path.isfile(file):
                 files.append(file)
                 
-# Get the key variable
-secret_key = input("Enter the key: ")
+# Get the encoded key variable
+encoded_secret_key = input("Enter the key: ")
+
+# Decode the key
+secret_key = base64.b64decode(encoded_secret_key)
 
 print(files)
         
